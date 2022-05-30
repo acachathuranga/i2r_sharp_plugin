@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/sutd-logo-academics.jpg</file>
+    </qresource>
+</RCC>
