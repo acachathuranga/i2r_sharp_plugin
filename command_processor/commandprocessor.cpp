@@ -18,6 +18,10 @@ void CommandProcessor::executeMission(QString mission_cmd, QString data_path)
 {
     mission_file_directory_ = data_path;
     task_manager_command = mission_cmd;
+    if (this->isRunning())
+    {
+        console_->print("Error: Robot is currently running a task. Ignoring new command!");
+    }
     this->start();
     //mission_thread_ = new std::thread(&CommandProcessor::taskManager, this, mission_cmd);
 }
@@ -242,6 +246,7 @@ void CommandProcessor::taskManager(QString command)
         if (robotState != RobotState::Standby)
         {
             //com_->publish(MISSION_STATUS_TOPIC, MISSION_STATUS_FIELD, MISSION_FAIL, "Invalid Command. Robot not standby at parking");
+            console_->print("Invalid Command. Robot not standby at parking");
             initRobotState(robotState);
             return;
         }
@@ -313,6 +318,7 @@ void CommandProcessor::taskManager(QString command)
         if (robotState != RobotState::Idle)
         {
             //com_->publish(MISSION_STATUS_TOPIC, MISSION_STATUS_FIELD, MISSION_FAIL, "Invalid Command. Robot not idle at parking");
+            console_->print("Invalid Command. Robot not idle at parking");
             initRobotState(robotState);
             return;
         }
@@ -371,6 +377,7 @@ void CommandProcessor::taskManager(QString command)
         if (robotState != RobotState::Charging)
         {
             //com_->publish(MISSION_STATUS_TOPIC, MISSION_STATUS_FIELD, MISSION_FAIL, "Invalid Command. Robot not at Charger");
+            console_->print("Invalid Command. Robot not at Charger");
             initRobotState(robotState);
             return;
         }
@@ -421,6 +428,7 @@ void CommandProcessor::taskManager(QString command)
         if (robotState != RobotState::Standby)
         {
             //com_->publish(MISSION_STATUS_TOPIC, MISSION_STATUS_FIELD, MISSION_FAIL, "Invalid Command. Robot not standby at parking");
+            console_->print("Invalid Command. Robot not standby at parking");
             initRobotState(robotState);
             return;
         }
