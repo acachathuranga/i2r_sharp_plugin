@@ -342,6 +342,8 @@ void gui_plugin::SHARP::on_pushButton_deliverWalker_clicked()
     Json::Value mission;
     Json::FastWriter writer;
     mission["command"] = "deliver_wf";
+    mission["bed_id"] = ui->lineEdit_walkerDeliveryBed->text().toInt();
+    console->print("Walking Frame Deliver Request to bed: " + mission["bed_id"].asString());
     cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
 }
 
