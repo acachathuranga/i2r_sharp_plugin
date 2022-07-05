@@ -58,13 +58,11 @@ private slots:
 
     void on_pushButton_Undock_clicked();
 
+    void on_pushButton_deliverWalker_clicked();
+
     void on_pushButton_deliverCommode_clicked();
 
     void on_pushButton_cleanCommode_clicked();
-
-    void on_pushButton_openDoor_clicked();
-
-    void on_pushButton_closeDoor_clicked();
 
     void on_pushButton_safetyOn_clicked();
 

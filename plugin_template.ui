@@ -107,7 +107,7 @@
    </item>
    <item row="2" column="0">
     <layout class="QFormLayout" name="formLayout_2">
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLineEdit" name="lineEdit_deliveryBed">
        <property name="maximumSize">
         <size>
@@ -117,7 +117,7 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QPushButton" name="pushButton_deliverCommode">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -130,7 +130,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="4" column="0">
       <widget class="QLineEdit" name="lineEdit_collectionBed">
        <property name="maximumSize">
         <size>
@@ -140,7 +140,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QPushButton" name="pushButton_cleanCommode">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -150,13 +150,6 @@
        </property>
        <property name="text">
         <string>Clean</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QPushButton" name="pushButton_openDoor">
-       <property name="text">
-        <string>Open Door</string>
        </property>
       </widget>
      </item>
@@ -186,31 +179,38 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
+     <item row="9" column="1">
       <widget class="QPushButton" name="pushButton_closeDoor">
        <property name="text">
-        <string>Close Door</string>
+        <string>Reserved</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="6" column="1">
       <widget class="QPushButton" name="pushButton_safetyOn">
        <property name="text">
         <string>Robot Collision Safety On</string>
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
+     <item row="7" column="1">
       <widget class="QPushButton" name="pushButton_safetyOff">
        <property name="text">
         <string>Robot Collision Safety Off</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="5" column="1">
       <widget class="QPushButton" name="pushButton_parkCommode">
        <property name="text">
         <string>Park Commode</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="pushButton_deliverWalker">
+       <property name="text">
+        <string>Deliver Walker</string>
        </property>
       </widget>
      </item>

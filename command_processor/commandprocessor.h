@@ -59,7 +59,7 @@ class CommandProcessor : public QThread
         bool response_received_;
         std::atomic<int> mission_response_id_;
         std::atomic<int> mission_id_;
-        std::atomic<bool> mission_status_;
+        std::atomic<int> mission_status_;
         QString task_manager_command;
 
         RobotState robotState = RobotState::Charging;
@@ -69,12 +69,10 @@ class CommandProcessor : public QThread
 
         const std::string MISSION_STATUS_TOPIC	{ "robot_command_status" };
         const std::string ROBOT_STATUS_TOPIC    { "robot_status" };
-        const std::string DOOR_CONTROL_TOPIC    { "door_control" };
         const std::string ROBOT_LOCATION_TOPIC  { "robot_location" };
 
         const std::string MISSION_STATUS_FIELD          {"success"};
         const std::string ROBOT_STATUS_FIELD            {"status"};
-        const std::string DOOR_CONTROL_FIELD            {"open"};
         const std::string ROBOT_LOCATION_FIELD          {"location"};
 
         const std::string ROBOT_STATUS_STANDBY          {"standby"};
@@ -86,15 +84,12 @@ class CommandProcessor : public QThread
 
         // Robot Locations
         const std::string LOCATION_CHARGER                  {"charger"};
-        const std::string LOCATION_MANIPULATOR              {"manipulator"};
         const std::string LOCATION_HALLWAY                  {"hallway"};
-        const std::string LOCATION_PARKING                  {"parking"};
+        const std::string LOCATION_CLEANING_ROOM            {"cleaning_room"};
         const std::string LOCATION_BED_PREFIX               {"bed_"};
 
         const bool MISSION_SUCCESS = true;
         const bool MISSION_FAIL = false;
-        const bool DOOR_OPEN = true;
-        const bool DOOR_CLOSE = false;
 
         void run();
         bool sendTask(QString file_name);
@@ -119,26 +114,22 @@ class CommandProcessor : public QThread
         const QString SAFETY_OFF = "SafetyOff";
 
         const QString COLLECT_PAYLOAD_FROM_BED = "Collect_from_bed";
-        const QString COLLECT_PAYLOAD_FROM_MANIPULATOR = "Collect_from_manipulator";
-        const QString RELEASE_PAYLOAD_TO_BED = "Release_to_bed";
-        const QString RELEASE_PAYLOAD_TO_MANIPULATOR = "Release_to_manipulator";
 
         const QString ROBOT_FOOTPRINT_UPDATE_WITH_PAYLOAD = "robot_footprint_update_with_payload";
         const QString ROBOT_FOOTPRINT_UPDATE_WITHOUT_PAYLOAD = "robot_footprint_update_without_payload";
 
-        const QString LF_CHARGER_TO_MANIPULATOR = "LF_charger_to_manipulator";
-        const QString LF_MANIPULATOR_TO_HALLWAY = "LF_manipulator_to_hallway";
-        const QString LF_HALLWAY_TO_PARKING = "LF_hallway_to_parking";
+        const QString LF_CHARGER_TO_HALLWAY = "LF_charger_to_hallway";
+        const QString LF_HALLWAY_TO_CHARGER = "LF_hallway_to_charger";
 
-        const QString LF_PARKING_EXIT = "LF_parking_exit";
+        const QString LF_HALLWAY_TO_CLEANING_ROOM = "LF_hallway_to_cleaning_room";
+        const QString LF_CLEANING_ROOM_TO_HALLWAY = "LF_cleaning_room_to_hallway";
+
         const QString LF_HALLWAY_TO_BED_PREFIX = "toBeds/LF_hallway_to_bed_";
-        const QString LF_HALLWAY_TO_BED_COLLECT_PREFIX = "toBedsCollect/LF_hallway_to_bed_";
-
+        //const QString LF_HALLWAY_TO_BED_COLLECT_PREFIX = "toBedsCollect/LF_hallway_to_bed_";
         const QString LF_BED_TO_HALLWAY_PREFIX = "fromBeds/LF_bed_to_hallway_";
-        const QString LF_BED_EXIT_PREFIX = "exitBeds/LF_bed_exit_";
 
-        const QString LF_HALLWAY_TO_MANIPULATOR = "LF_hallway_to_manipulator";
-        const QString LF_MANIPULATOR_TO_CHARGER = "LF_manipulator_to_charger";
+        const QString LF_HALLWAY_TO_WALKER_DROP_PREFIX = "toWalkerDrop/LF_hallway_to_walker_drop_";
+        const QString LF_WALKER_DROP_TO_HALLWAY_PREFIX = "fromWalkerDrop/LF_walker_drop_to_hallway_";
 };
 
 #endif // COMMANDPROCESSOR_H

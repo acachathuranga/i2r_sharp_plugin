@@ -332,6 +332,19 @@ void gui_plugin::SHARP::on_pushButton_Undock_clicked()
     cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
 }
 
+void gui_plugin::SHARP::on_pushButton_deliverWalker_clicked()
+{
+    if (!configured)
+    {
+        console->print("Warning: Configuration Directory Not Set");
+    }
+    console->print("Deliverying Walking Frame");
+    Json::Value mission;
+    Json::FastWriter writer;
+    mission["command"] = "deliver_wf";
+    cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
+}
+
 void gui_plugin::SHARP::on_pushButton_deliverCommode_clicked()
 {
     if (!configured)
@@ -357,24 +370,6 @@ void gui_plugin::SHARP::on_pushButton_cleanCommode_clicked()
     mission["command"] = "collect";
     mission["bed_id"] = ui->lineEdit_collectionBed->text().toInt();
     console->print("Commode Collect Request from bed: " + mission["bed_id"].asString());
-    cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
-}
-
-void gui_plugin::SHARP::on_pushButton_openDoor_clicked()
-{
-    console->print("Door Open Command");
-    Json::Value mission;
-    Json::FastWriter writer;
-    mission["command"] = "door_open";
-    cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
-}
-
-void gui_plugin::SHARP::on_pushButton_closeDoor_clicked()
-{
-    console->print("Door Close Command");
-    Json::Value mission;
-    Json::FastWriter writer;
-    mission["command"] = "door_close";
     cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
 }
 
@@ -514,3 +509,5 @@ void gui_plugin::SHARP::on_pushButton_gripperExtendedRelease_clicked()
     mission["command"] = "gripper_extended_release";
     cmd_processor->executeMission(QString::fromStdString(writer.write(mission)), config_dir);
 }
+
+
